@@ -1,0 +1,104 @@
+% se puede agregar la opción [english] para 
+% memorias o tesis en inglés (borrando el archivo .aux)
+% \documentclass[english]{umemoria} 
+\documentclass{umemoria}
+
+\depto{Departamento de Ingeniería Eléctrica}
+\author{Nombre Completo Autor}
+\title{Título de la Tesis}
+
+% incluir ambos comandos para una doble titulación
+%  o quitar el comando que no aplica
+\memoria{Ingenier[o/a] Civil Eléctric[o/a]} % en caso de doble grado
+\tesis{Magíster en CIENCIAS DE LA INGENIERÍA, MENCIÓN ELÉCTRICA} % en caso de magíster
+%\tesis{DOCTOR EN INGENIERÍA ELÉCTRICA} % incluir solo este comando para doctorados
+
+% puede haber varios profesores guía seperados por coma;
+% pero si es una memoria, solo puede haber un profesor guía
+\guia{Nombre Apellido1 Apellido2} 
+
+% puede haber varios profesores co-guía seperados por coma;
+% pero si es una memoria, el profesor co-guía será el primer
+% integrante de la comisión
+\coguia{Nombre Apellido1 Apellido2 (opcional)} % incluir en caso de co-guía de *tesis*
+
+%\cotutela{Nombre Institución} % incluir en caso de cotutela
+
+\comision{Nombre Apellido1 Apellido2,Nombre Apellido1 Apellido2,Nombre Apellido1 Apellido2}
+
+\auspicio{NOMBRE FINANCIAMIENTO (Opcional)} % incluir en caso de recibir financiamiento
+
+% tiene que ser el año en que se da el examen de título/grado (defensa)
+%\anho{2021} % incluir solo para reemplazar el año actual
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Paquetes extra:
+
+% Glosario 
+\usepackage[acronym,nomain,nonumberlist]{glossaries}
+\makeglossaries
+\renewcommand*{\glsgroupskip}{}
+
+% Para las captions con diferente título en texto y en índice
+\newcommand{\mycaption}[2]{\caption[{#1}]{#2}}
+
+% Figuras TikZ
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, shapes.geometric}
+\usepackage{tikz}
+
+% Algoritmos
+\usepackage{algorithm2e}
+\iflanguage{spanish}{
+    \renewcommand{\algorithmcfname}{Algoritmo}
+}{
+    \renewcommand{\algorithmcfname}{Algorithm}
+}
+
+% Subfiguras
+\usepackage{subcaption}
+
+% Logo de Github
+\usepackage{fontawesome5}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\frontmatter
+\maketitle
+
+\input{Capitulos/0_Resumen}
+
+\begin{dedicatoria}
+Una dedicatoria corta (es opcional).
+\end{dedicatoria}
+
+\begin{thanks}
+Los agradecimientos deben ir en una sola página y son opcionales. Es importante asegurarse de completar esta sección (si procede) antes de enviar al comité. Estos agradecimientos forman parte de un documento formal, por lo que deben evitarse alusiones a otros ámbitos o comentarios de carácter negativo hacia personas o instituciones.
+\end{thanks}
+
+\tableofcontents
+\listoftables % opcional
+\listoffigures % opcional
+
+\input{Capitulos/Glosario} % opcional
+
+\mainmatter
+
+\input{Capitulos/1_Introduccion}
+\input{Capitulos/2_Marco_Teorico}
+\input{Capitulos/3_Metodologia}
+\input{Capitulos/4_Resultados}
+\input{Capitulos/5_Conclusion}
+
+\nocite{*}
+\bibliographystyle{ieeetr}
+\bibliography{bibliografia}
+
+% opcional ...
+\begin{appendices}
+\input{Capitulos/AnexoA} % opcional
+\input{Capitulos/AnexoB} % opcional
+\end{appendices}
+\end{document}
