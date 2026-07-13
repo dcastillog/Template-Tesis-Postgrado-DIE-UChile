@@ -13,7 +13,7 @@ del comité de postgrado del departamento.
 
 Por defecto, el template está configurado para una doble titulación de 
 Ingeniería Eléctrica con Magíster. Las líneas necesarias para adaptarlo 
-a un programa de Doctorado se encuentran comentadas en el código y están 
+a un programa de Doctorado o un programa exlusivamente de magíster se encuentran comentadas en el código y están 
 disponibles para su activación.
 
 ## Licencia
