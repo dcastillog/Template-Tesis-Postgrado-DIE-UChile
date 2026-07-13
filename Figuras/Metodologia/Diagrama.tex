@@ -1,0 +1,53 @@
+\begin{tikzpicture}[
+    >=Stealth,
+    node distance=0.8cm,
+    block/.style={
+        rectangle,
+        draw=black,
+        thick,
+        minimum width=2.4cm,
+        minimum height=0.9cm,
+        align=center,
+        font=\small
+    },
+    decision/.style={
+        diamond,
+        draw=black,
+        thick,
+        minimum width=2.4cm,
+        minimum height=0.9cm,
+        align=center,
+        font=\small,
+        aspect=2
+    },
+    terminal/.style={
+        rectangle,
+        draw=black,
+        thick,
+        rounded corners=0.4cm,
+        minimum width=2.4cm,
+        minimum height=0.9cm,
+        align=center,
+        font=\small
+    }
+]
+ 
+\node[terminal]  (inicio)    {Inicio};
+\node[block,     right=of inicio]    (paso1)    {Paso 1};
+\node[block,     right=of paso1]     (paso2)    {Paso 2};
+\node[decision,  right=of paso2]     (decision) {Condicion};
+\node[block,     right=of decision]  (paso3)    {Paso 3};
+\node[terminal,  right=of paso3]     (fin)      {Fin};
+ 
+\draw[->, thick] (inicio)   -- (paso1);
+\draw[->, thick] (paso1)    -- (paso2);
+\draw[->, thick] (paso2)    -- (decision);
+\draw[->, thick] (decision) -- node[above, font=\small] {Si} (paso3);
+\draw[->, thick] (paso3)    -- (fin);
+ 
+% Loop back on No
+\draw[->, thick] (decision.south)
+    -- ++(0,-1.0)
+    -| node[below, font=\small, pos=0.25] {No} (paso1.south);
+ 
+\end{tikzpicture}

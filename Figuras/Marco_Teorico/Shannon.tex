@@ -1,0 +1,28 @@
+\begin{tikzpicture}[
+    >=Stealth,
+    block/.style={
+        rectangle,
+        draw=black,
+        thick,
+        minimum width=2.4cm,
+        minimum height=1.0cm,
+        align=center,
+        font=\small
+    },
+    node distance=0.8cm
+]
+ 
+\node[block] (fuente)     {Fuente};
+\node[block, right=of fuente]  (transmisor) {Transmisor};
+\node[block, right=of transmisor] (canal)   {Canal};
+\node[block, right=of canal]   (receptor)   {Receptor};
+\node[block, right=of receptor] (destino)   {Destino};
+\node[block, below=1.2cm of canal] (ruido)  {Ruido};
+ 
+\draw[->, thick] (fuente)     -- (transmisor);
+\draw[->, thick] (transmisor) -- (canal);
+\draw[->, thick] (canal)      -- (receptor);
+\draw[->, thick] (receptor)   -- (destino);
+\draw[->, thick] (ruido)      -- (canal);
+ 
+\end{tikzpicture}
